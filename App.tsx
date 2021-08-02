@@ -8,22 +8,34 @@
  * @format
  */
 
- import React from 'react';
- import { Image, StyleSheet, Text, View } from 'react-native';
- import { DEVICE_HEIGHT, DEVICE_WIDTH } from './src/utils/dimensions';
- import { colors } from './src/utils/theme';
+import React from 'react';
+import { Alert, Image, StyleSheet, Text, View } from 'react-native';
 
- const App = () => {
-   return (
-    <View style={ styles.mainContainer }>
-      <Text style={ styles.title }>Texto</Text>
-      <Text>Subtitulo</Text>
-      <Image source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} style={ styles.image } resizeMode="contain" />
+import DefaultButton from './src/components/DefaultButton';
+
+import { colors } from './src/utils/theme';
+import { DEVICE_WIDTH } from './src/utils/dimensions';
+
+const showAlert = () => {
+  Alert.alert('Hola!');
+};
+
+const App = () => {
+  return (
+    <View style={styles.mainContainer}>
+      <Text style={styles.title}>Título</Text>
+      <Text>Subtítulo</Text>
+      <Image
+        resizeMode="contain"
+        source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
+        style={styles.image}
+      />
+      <DefaultButton color={colors.mainOrange} onPress={showAlert} text="Hola" textSize={24} />
     </View>
-   );
- };
+  );
+};
 
- const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   mainContainer: {
     alignItems: 'center',
     backgroundColor: colors.veryLightBlue,
@@ -42,7 +54,7 @@
     marginTop: 5,
     minHeight: 100,
     width: DEVICE_WIDTH * 0.5,
-  }
- });
+  },
+});
 
- export default App;
+export default App;
