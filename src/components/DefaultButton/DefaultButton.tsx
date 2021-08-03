@@ -1,31 +1,41 @@
 import React from 'react';
-import { Text, TouchableOpacity, ViewStyle } from 'react-native';
-import { colors } from '../../utils/theme';
-import styles from './style';
+import { TouchableOpacity, ViewStyle } from 'react-native';
 
+import Typography from '../Typography';
+
+import styles, { buttonTextColors } from './styles';
+import { colors } from '../../utils/theme';
 interface Props {
   additionalStyle?: ViewStyle;
-  color?: string;
   onPress: () => void;
   text: string;
   textSize?: number;
+  variant?: 'primary' | 'secondary';
 }
 
-const DefaultButton = ({ additionalStyle, color, onPress, text, textSize }: Props) => {
+const DefaultButton = ({
+  additionalStyle,
+  onPress,
+  text,
+  textSize,
+  variant = 'primary',
+}: Props) => {
   return (
     <TouchableOpacity
-      style={[styles.mainContainer, additionalStyle, { backgroundColor: color }]}
+      style={[styles.mainContainer, styles[variant], additionalStyle]}
       onPress={onPress}
     >
-      <Text style={{ fontSize: textSize }}>{text}</Text>
+      <Typography color={buttonTextColors[variant] || colors.white} size={textSize}>
+        {text}
+      </Typography>
     </TouchableOpacity>
   );
 };
 
 DefaultButton.defaultProps = {
   additionalStyle: {},
-  color: colors.mainOrange,
-  textSize: 14,
+  textSize: 18,
+  variant: 'primary',
 };
 
 export default DefaultButton;
