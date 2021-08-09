@@ -10,4 +10,8 @@ const Separator = ({ separation }: Props) => {
   return <View style={[styles.separator, { height: separation }]} />;
 };
 
+Separator.defaultProps = {
+  separation: 10,
+};
+
 export default Separator;
