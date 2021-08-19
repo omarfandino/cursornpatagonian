@@ -1,17 +1,13 @@
 import React from 'react';
 import { View } from 'react-native';
-import styles from './styles';
 
 interface Props {
-  separation: number;
+  isHorizontal?: boolean;
+  size: number;
 }
 
-const Separator = ({ separation }: Props) => {
-  return <View style={[styles.separator, { height: separation }]} />;
-};
-
-Separator.defaultProps = {
-  separation: 10,
-};
+const Separator = ({ isHorizontal, size }: Props) => (
+  <View style={isHorizontal ? { width: size } : { height: size }} />
+);
 
 export default Separator;
