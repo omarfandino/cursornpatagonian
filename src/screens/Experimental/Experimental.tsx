@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Image, SafeAreaView, ScrollView, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Image, ScrollView, View } from 'react-native';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
-import { AlertModal, DefaultButton, Separator, Typography } from '../../components';
+import { AlertModal, DefaultButton, Header, Separator, Typography } from '../../components';
 import styles from './styles';
 
 import { colors } from '../../utils/theme';
@@ -11,6 +12,12 @@ const arr = Array.from({ length: 6 }, (_, index) => index);
 
 const ExperimentalScreen = () => {
   const [isModalVisible, setModalVisible] = useState(false);
+
+  useEffect(() => {
+    console.log('Inside useEffect');
+  }, []);
+
+  console.log('Inside Experimental');
 
   const showModal = () => {
     setModalVisible(true);
@@ -22,7 +29,7 @@ const ExperimentalScreen = () => {
 
   return (
     <>
-      <SafeAreaView style={styles.safeArea} />
+      <Header title="Experimental" />
       <ScrollView style={styles.scrollView}>
         <View style={styles.mainContainer}>
           <Typography color={colors.mainOrange} size={30} variant="bold">
@@ -30,6 +37,7 @@ const ExperimentalScreen = () => {
           </Typography>
           <Typography variant="medium">Subtitulo</Typography>
           <Separator size={10} />
+          <MaterialIcon name="search" size={30} color={colors.mainOrange} />
           {arr.map((item) => (
             <View key={`image-${item}`}>
               <Image
