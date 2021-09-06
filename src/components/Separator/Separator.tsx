@@ -10,4 +10,8 @@ const Separator = ({ isHorizontal, size }: Props) => (
   <View style={isHorizontal ? { width: size } : { height: size }} />
 );
 
+Separator.defaultProps = {
+  size: 10,
+};
+
 export default Separator;
